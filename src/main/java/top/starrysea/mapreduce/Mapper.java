@@ -144,7 +144,7 @@ public abstract class Mapper implements Runnable {
 	private void execStr(MapReduceContext context) {
 		if (singleMessage == null)
 			return;
-		singleMessage.setBody(singleMessage.getBody().replace("\\n\\n", ""));
+		singleMessage.setBody(singleMessage.getBody().substring(0, singleMessage.getBody().length() - 4));
 		map(singleMessage, context);
 	}
 
