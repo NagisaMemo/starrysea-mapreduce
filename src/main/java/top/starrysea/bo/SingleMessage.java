@@ -112,9 +112,9 @@ public class SingleMessage {
     public String toString() {//仿照聊天记录格式将 Message 实体转化为字符串
         String message = "";
         if (id.contains("@")) {
-            message += year + "-" + getMonth() + "-" + getDay() + " " + hour + ":" + minute + ":" + second + " " + nickname + "<" + id + ">\n";
+            message += year + "-" + getMonth() + "-" + getDay() + " " + hour + ":" + getMinute() + ":" + getSecond() + " " + nickname + "<" + id + ">\n";
         } else {
-            message += year + "-" + getMonth() + "-" + getDay() + " " + hour + ":" + minute + ":" + second + " " + nickname + "(" + id + ")\n";
+            message += year + "-" + getMonth() + "-" + getDay() + " " + hour + ":" + getMinute() + ":" + getSecond() + " " + nickname + "(" + id + ")\n";
         }
         body = body.replace("\\n", "\n");
         message += body + "\n";
