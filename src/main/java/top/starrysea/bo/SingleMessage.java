@@ -100,11 +100,24 @@ public class SingleMessage {
         }
     }
 
-    public static SingleMessage stringToMessage(String message){
+    public static SingleMessage stringToMessage(String message) {//将单行消息转为 Message 实体
         SingleMessage singleMessage = new SingleMessage();
         String head = message.substring(0, message.indexOf("\\n"));
         singleMessage.setHead(head);
         singleMessage.setBody(message.substring(message.indexOf("\\n") + 2));
         return singleMessage;
+    }
+
+    @Override
+    public String toString() {//仿照聊天记录格式将 Message 实体转化为字符串
+        String message = "";
+        if (id.contains("@")) {
+            message += year + "-" + getMonth() + "-" + getDay() + " " + hour + ":" + getMinute() + ":" + getSecond() + " " + nickname + "<" + id + ">\n";
+        } else {
+            message += year + "-" + getMonth() + "-" + getDay() + " " + hour + ":" + getMinute() + ":" + getSecond() + " " + nickname + "(" + id + ")\n";
+        }
+        body = body.replace("\\n", "\n");
+        message += body + "\n";
+        return message;
     }
 }
